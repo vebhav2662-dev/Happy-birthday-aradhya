@@ -1,0 +1,54 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>For Aradhya 💗</title>
+<style>
+*{box-sizing:border-box}body{margin:0;background:linear-gradient(140deg,#fff0f6,#f8d8e7,#fff8fb);color:#54243a;font-family:system-ui,sans-serif;overflow-x:hidden}
+main{max-width:900px;margin:auto;padding:18px}.hero{min-height:88vh;display:grid;place-items:center;text-align:center}
+.panel{width:100%;max-width:700px;padding:clamp(24px,6vw,52px);border:1px solid white;border-radius:28px;background:#ffffffdc;box-shadow:0 15px 55px #a7446a20}
+.kicker{text-transform:uppercase;letter-spacing:.2em;font-size:.75rem;color:#b14e78;font-weight:700}
+h1,h2{font-family:Georgia,serif;color:#c13e76}h1{font-size:clamp(2.7rem,11vw,5.8rem);line-height:1;margin:18px 0}
+h2{text-align:center;font-size:clamp(2rem,7vw,3rem)}p{line-height:1.7}
+button{border:0;border-radius:999px;background:#d94f87;color:#fff;font-weight:700;padding:13px 20px;font-size:1rem;cursor:pointer;margin:5px}
+button.secondary{background:#a85b80}button:active{transform:scale(.98)}
+#secret{display:none;background:#fff2f7;border-radius:18px;padding:18px;margin:18px auto;font:1.35rem/1.6 Georgia,serif}
+#counter{font-weight:700;color:#b13f73}
+.gallery{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:14px}
+figure{margin:0;padding:9px;background:white;border-radius:20px;box-shadow:0 8px 25px #a43c6818}
+figure img{width:100%;height:310px;object-fit:cover;border-radius:14px;display:block;filter:grayscale(1);cursor:pointer}
+figcaption{text-align:center;padding:10px 3px;color:#9d466a}
+.note{text-align:center;background:#fff9fc;border:1px solid #f5c6d8;border-radius:24px;padding:24px;line-height:1.8}
+#lightbox{display:none;position:fixed;inset:0;background:#160b12eF;z-index:10;align-items:center;justify-content:center;padding:20px}
+#lightbox img{max-width:95vw;max-height:85vh;object-fit:contain;border-radius:14px}
+#lightbox button{position:absolute;top:15px;right:15px}
+.heart{position:fixed;bottom:-40px;z-index:0;pointer-events:none;animation:rise 7s linear forwards}@keyframes rise{to{transform:translateY(-115vh) rotate(30deg);opacity:0}}
+main{position:relative;z-index:1}footer{text-align:center;padding:30px;color:#a35a78}
+@media(max-width:500px){figure img{height:260px}}
+</style></head>
+<body><main>
+<div class="hero"><div class="panel">
+<div class="kicker">A little birthday surprise</div><h1>Happy Birthday<br>Aradhya 💗</h1>
+<p>Aaj ka din tumhare naam…<br>and a little reminder that you are very special.</p>
+<button id="open">Open your surprise ✨</button>
+<div id="secret">“Mei tera hi huuuu, sumjnaaa plsss” 💞<br><small>— Vaibhav</small></div>
+<p><button class="secondary" id="music">♫ Play birthday tune</button></p>
+<p>Surprise opened <span id="counter">0</span> times 💌</p>
+</div></div>
+<section><h2>Little moments 💕</h2><p style="text-align:center">Tap any photo to view it bigger.</p>
+<div class="gallery">
+<figure><img src="./photos/photo1.jpg" alt="Photo 1" loading="lazy" onclick="showPhoto(this)" onerror="this.closest('figure').querySelector('figcaption').textContent='Photo missing — upload photos/photo1.jpg'"><figcaption>A favorite moment</figcaption></figure>
+<figure><img src="./photos/photo2.jpg" alt="Photo 2" loading="lazy" onclick="showPhoto(this)" onerror="this.closest('figure').querySelector('figcaption').textContent='Photo missing — upload photos/photo2.jpg'"><figcaption>A memory to keep</figcaption></figure>
+<figure><img src="./photos/photo3.jpg" alt="Photo 3" loading="lazy" onclick="showPhoto(this)" onerror="this.closest('figure').querySelector('figcaption').textContent='Photo missing — upload photos/photo3.jpg'"><figcaption>Just you being you</figcaption></figure>
+<figure><img src="./photos/photo4.jpg" alt="Photo 4" loading="lazy" onclick="showPhoto(this)" onerror="this.closest('figure').querySelector('figcaption').textContent='Photo missing — upload photos/photo4.jpg'"><figcaption>Always worth a smile</figcaption></figure>
+<figure><img src="./photos/photo5.jpg" alt="Photo 5" loading="lazy" onclick="showPhoto(this)" onerror="this.closest('figure').querySelector('figcaption').textContent='Photo missing — upload photos/photo5.jpg'"><figcaption>More memories, more smiles</figcaption></figure>
+</div></section>
+<section><h2>Just for you 🌷</h2><div class="note">Happy Birthday, Aradhya! 🎂<br>I hope your day is filled with smiles, warmth, and all the little things that make you happy. Keep shining, keep smiling, and never forget how special you are to me.<br><br><b>— Vaibhav 💗</b></div></section>
+<footer>Made with lots of love 💗</footer></main>
+<div id="lightbox" onclick="this.style.display='none'"><button>Close ✕</button><img id="large" alt="Expanded photo"></div>
+<script>
+let count=0;document.getElementById('open').onclick=()=>{let s=document.getElementById('secret');s.style.display=s.style.display==='block'?'none':'block';if(s.style.display==='block'){count++;document.getElementById('counter').textContent=count;document.getElementById('open').textContent='Close surprise 💞'}else document.getElementById('open').textContent='Open your surprise ✨'};
+function showPhoto(img){document.getElementById('large').src=img.src;document.getElementById('lightbox').style.display='flex'}
+let ctx=null,playing=false;document.getElementById('music').onclick=async()=>{let b=document.getElementById('music');if(playing){playing=false;if(ctx)ctx.close();ctx=null;b.textContent='♫ Play birthday tune';return}ctx=new(window.AudioContext||window.webkitAudioContext)();await ctx.resume();playing=true;b.textContent='♫ Stop tune';[523,587,659,784,659,587,523,392,440,523].forEach((f,i)=>{let t=ctx.currentTime+i*.42,o=ctx.createOscillator(),g=ctx.createGain();o.type='sine';o.frequency.value=f;g.gain.setValueAtTime(.0001,t);g.gain.exponentialRampToValueAtTime(.07,t+.04);g.gain.exponentialRampToValueAtTime(.0001,t+.35);o.connect(g);g.connect(ctx.destination);o.start(t);o.stop(t+.37)});setTimeout(()=>{if(playing){playing=false;ctx.close();ctx=null;b.textContent='♫ Play birthday tune'}},5000)};
+setInterval(()=>{let h=document.createElement('span');h.className='heart';h.textContent=['💗','💕','💖','♡'][Math.floor(Math.random()*4)];h.style.left=Math.random()*100+'vw';h.style.fontSize=(18+Math.random()*24)+'px';document.body.appendChild(h);setTimeout(()=>h.remove(),7200)},700);
+</script></body></html>
